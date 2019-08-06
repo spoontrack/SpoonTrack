@@ -18,14 +18,18 @@ repositories {
 }
 
 ext {
-    jsoupVer            = '1.12.1'
-    okhttpVer           = '4.0.1'
-    slf4jSimpleVer      = '2.0.0-alpha0'
+    jsoupVer                = '1.12.1'
+    okhttpVer               = '4.0.1'
+    slf4jSimpleVer          = '2.0.0-alpha0'
+    hikaricpVer             = '3.3.1'
+    mysqlConnectorJavaVer   = '8.0.17'
 }
 
 dependencies {
     compile group: 'org.jsoup', name: 'jsoup', version: jsoupVer
     compile group: 'com.squareup.okhttp3', name: 'okhttp', version: okhttpVer
     compile group: 'org.slf4j', name: 'slf4j-simple', version: slf4jSimpleVer
+    compile group: 'com.zaxxer', name: 'HikariCP', version: hikaricpVer
+    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlConnectorJavaVer
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

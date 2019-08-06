@@ -8,6 +8,7 @@ Application currently retrieves data about all currently listed pubs in the UK.
 
 ```java
  .retrievePubs()
+ .updateDatabase()
 ```
 
 ## Usage
@@ -22,12 +23,19 @@ SpoonTrack spoon = new SpoonTrack();
 
 **Pubs** - Retrieves a list of all currently listed Wetherspoons locations.
 ```java
-List<Pub> pubs = spoon.retrievePubs()
+List<Pub> pubs = spoon.retrievePubs();
 
 Pub pub = pub.get(0);
 pub.getName();
-
 ```
+
+### Insert
+
+**Pubs** - Inserts database entries for each pub in the pubs list.
+```java
+spoon.updateDatabase();
+```
+
 
 ## Download
 
@@ -74,3 +82,5 @@ dependencies {
 | [SLF4J](https://github.com/qos-ch/slf4j) | 2.0.0-alpha0 |
 | [OkHttp](https://github.com/square/okhttp/) | 4.0.1 |
 | [jsoup](https://github.com/jhy/jsoup) | 1.12.1 |
+| [HikariCP](https://github.com/brettwooldridge/HikariCP) | 3.3.1 |
+| [MySQLConnector](https://github.com/mysql/mysql-connector-j) | 8.0.17 |

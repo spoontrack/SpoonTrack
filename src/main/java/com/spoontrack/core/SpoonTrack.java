@@ -1,5 +1,6 @@
 package com.spoontrack.core;
 
+import com.spoontrack.core.database.DatabaseFunctions;
 import com.spoontrack.core.entity.Pub;
 import com.spoontrack.core.io.RequestHandler;
 
@@ -14,5 +15,11 @@ public class SpoonTrack {
 
     private List<Pub> retrievePubs() {
         return pubs;
+    }
+
+    private void updateDatabase() {
+        for(Pub pub: pubs) {
+            DatabaseFunctions.addPub(pub);
+        }
     }
 }
