@@ -9,10 +9,10 @@ public class SpoonTrack {
     private static List<Pub> pubs;
 
     public static void main(String[] args) {
-        collectPubs();
+        pubs = new RequestHandler().getPubs();
     }
 
-    private static void collectPubs() {
-        pubs = new RequestHandler().getPubs();
+    private List<Pub> retrievePubs() {
+        return pubs;
     }
 }
