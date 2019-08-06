@@ -23,8 +23,3 @@ target/
 build/
 out/production
 out/test
-
-# Gradle Stuff
-/gradle
-/gradlew
-/gradlew.bat

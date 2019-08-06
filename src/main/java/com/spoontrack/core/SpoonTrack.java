@@ -14,6 +14,5 @@ public class SpoonTrack {
 
     private static void collectPubs() {
         pubs = new RequestHandler().getPubs();
-        pubs.size();
     }
 }

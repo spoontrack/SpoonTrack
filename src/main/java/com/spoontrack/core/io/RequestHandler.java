@@ -27,27 +27,39 @@ public class RequestHandler {
             // Retrieving country wide elements.
             Elements countries = doc.getElementsByClass("advanced-listing-results__panel");
             if(countries.size() > 5) {
-                countries.remove(countries.size() - 1); // fifth index is malformed
+                countries.remove(countries.size() - 1); // last element is always malformed.
             }
 
-            // Loop through the country elements. advanced-listing-results__sub-title
+            Elements regions = doc.getElementsByClass("advanced-listing-results__sub-title");
+            int regionNumber = 0;
+
+            // Loop through the country elements.
             for(Element country: countries) {
                 String pubCountry = country.getElementsByClass("advanced-listing-results__area-title").text();
-                Elements pubz = country.getElementsByTag("a");
 
-                // Loop through each pub in the region.
-                for(Element pub: pubz) {
-                    if(pub.attr("href").startsWith("/p")) {
-                        String pubName = pub.getElementsByClass("advanced-listing-results__pub-name").get(0).text().replace(" >", "");
-                        String pubAddress = pub.getElementsByClass("advanced-listing-results__address").get(0).text();
-                        String pubLink = "https://www.jdwetherspoon.com" + pub.attr("href");
+                Elements regionPubs = country.getElementsByClass("advanced-listing-results__listing");
+                regionPubs.remove(0); // first element seems to always the entire list.
 
-                        pubs.add(new Pub(pubName, pubAddress, pubCountry, pubLink));
+                // Loop through every region in the country
+                for(Element region: regionPubs) {
+                    String pubRegion = regions.get(regionNumber++).text();
+                    Elements pubz = region.getElementsByTag("a");
+
+                    // Loop through each pub in the region.
+                    for(Element pub: pubz) {
+                        if(pub.attr("href").startsWith("/p")) {
+                            String pubName = pub.getElementsByClass("advanced-listing-results__pub-name").get(0).text().replace(" >", "");
+                            String pubAddress = pub.getElementsByClass("advanced-listing-results__address").get(0).text();
+                            String pubLink = "https://www.jdwetherspoon.com" + pub.attr("href");
+
+                            pubs.add(new Pub(pubName, pubAddress, pubRegion, pubCountry, pubLink));
+                        }
                     }
                 }
+
             }
 
-            log.info("Countries: " + countries.size() + ", Pubs: " + pubs.size());
+            log.info("Countries: " + countries.size() + ", Regions: " + regions.size() + ", Pubs: " + pubs.size());
         } catch(Exception ex) {
             ex.printStackTrace();
         }
