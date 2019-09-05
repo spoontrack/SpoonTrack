@@ -10,6 +10,19 @@ version '0.1.0'
 
 sourceCompatibility = 1.8
 
+jar {
+    doFirst {
+        manifest {
+            if(!configurations.compile.isEmpty()) {
+                attributes(
+                        'Class-Path': configurations.compile.collect { it.toURI().toString() }.join(' '),
+                        'Main-Class': mainClassName
+                )
+            }
+        }
+    }
+}
+
 repositories {
     mavenCentral()
     mavenLocal()
@@ -19,7 +32,7 @@ repositories {
 
 ext {
     jsoupVer                = '1.12.1'
-    okhttpVer               = '4.0.1'
+    okhttpVer               = '4.1.0'
     slf4jSimpleVer          = '2.0.0-alpha0'
     hikaricpVer             = '3.3.1'
     mysqlConnectorJavaVer   = '8.0.17'
