@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 
 group 'com.spoontrack.core'
-version '0.1.0'
+version '0.1.1'
 
 sourceCompatibility = 1.8
 
@@ -31,18 +31,18 @@ repositories {
 }
 
 ext {
-    jsoupVer                = '1.12.1'
-    okhttpVer               = '4.1.0'
-    slf4jSimpleVer          = '2.0.0-alpha0'
-    hikaricpVer             = '3.3.1'
-    mysqlConnectorJavaVer   = '8.0.17'
+    jsoup                = '1.12.1'
+    okhttp               = '4.2.0'
+    slf4jSimple          = '2.0.0-alpha0'
+    hikaricp             = '3.3.1'
+    mysqlConnectorJava   = '8.0.17'
 }
 
 dependencies {
-    compile group: 'org.jsoup', name: 'jsoup', version: jsoupVer
-    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: okhttpVer
-    compile group: 'org.slf4j', name: 'slf4j-simple', version: slf4jSimpleVer
-    compile group: 'com.zaxxer', name: 'HikariCP', version: hikaricpVer
-    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlConnectorJavaVer
+    compile group: 'org.jsoup', name: 'jsoup', version: jsoup
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: okhttp
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: slf4jSimple
+    compile group: 'com.zaxxer', name: 'HikariCP', version: hikaricp
+    compile group: 'mysql', name: 'mysql-connector-java', version: mysqlConnectorJava
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
